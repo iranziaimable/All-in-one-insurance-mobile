@@ -5,8 +5,6 @@ import { View } from "react-native"
 //formik
 import { Formik } from "formik"
 
-import { Picker } from "react-native-form-component"
-
 //icons
 import { Octicons, Ionicons, Fontisto } from "@expo/vector-icons"
 
@@ -39,10 +37,11 @@ import {
 import KeyboardAvoidWrapper from "../component/keyboardAvoidWrapper"
 
 //colors
-const { brand, darkLight, primary } = Colors
+const { brand, darkLight, primary, green } = Colors
 
 const DefineInsurance = ({ navigation }) => {
   const [number, setNumber] = useState(1)
+
   return (
     <KeyboardAvoidWrapper>
       <StyledContainer>
@@ -50,10 +49,12 @@ const DefineInsurance = ({ navigation }) => {
         <InnerContainer>
           <SubTitle>Define Insurance</SubTitle>
           <Formik
-            initialValues={{ fullName: "", type: "", description: "", price: "", deduction: "" }}
+            initialValues={{ name: "", type: "", description: "", price: "", deduction: "" }}
             onSubmit={(values) => {
+              // const response = fetch("http://localhost:8282/insurance/" + values)
+              // const body = response.json()
+              // this.setState({ values: body, isLoading: false })
               console.log(values)
-              navigation.navigate("DefineInsurance")
             }}
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -63,19 +64,19 @@ const DefineInsurance = ({ navigation }) => {
                 }}
               >
                 <MyTextInput
-                  label="Full Names"
+                  label="Name"
                   asterik
                   icon="person"
-                  placeholder="John Doe"
+                  placeholder="Radiant"
                   placeholderTextColor={darkLight}
-                  onChangeText={handleChange("fullName")}
-                  onBlur={handleBlur("fullName")}
-                  value={values.fullName}
+                  onChangeText={handleChange("name")}
+                  onBlur={handleBlur("name")}
+                  value={values.name}
                 />
                 <MyTextInput
                   label="Type/Categories"
                   icon="archive"
-                  placeholder=" ex: RSSB"
+                  placeholder=" ex: Health Insurance"
                   placeholderTextColor={darkLight}
                   onChangeText={handleChange("type")}
                   onBlur={handleBlur("type")}
@@ -126,7 +127,7 @@ const MyTextInput = ({ label, icon, ...props }) => {
   return (
     <View>
       <LeftIcon>
-        <Octicons name={icon} size={25} color={brand} />
+        <Octicons name={icon} size={25} color={green} />
       </LeftIcon>
       <StyledInputLabel>{label}</StyledInputLabel>
       <StyledTextInput {...props} />

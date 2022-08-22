@@ -1,117 +1,131 @@
-import React from "react"
-import { Avatar, Button, Card, Paragraph } from "react-native-paper"
+import React, { useState } from "react"
+import { StatusBar } from "expo-status-bar"
+import { View } from "react-native"
 
-import { Line } from "./../component/style"
-import { ScrollView } from "react-native-gesture-handler"
+//formik
+import { Formik } from "formik"
 
-const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />
+//icons
+import { Octicons, Ionicons, Fontisto } from "@expo/vector-icons"
+
+//colors
+// import { Colors } from './../component/style';
+
+import {
+  StyledContainer,
+  InnerContainer,
+  SubTitle,
+  StyleFormArea,
+  LeftIcon,
+  StyledInputLabel,
+  StyledTextInput,
+  StyleButton,
+  ButtonText,
+  Colors,
+} from "./../component/style"
+
+//keyboard avoiding view
+import KeyboardAvoidWrapper from "../component/keyboardAvoidWrapper"
+
+//colors
+const { brand, darkLight, primary, green } = Colors
 
 const InsuranceScreen = ({ navigation }) => {
+  const [number, setNumber] = useState(1)
+
   return (
-    <ScrollView>
-      <Card
-        style={{
-          marginBottom: 85,
-        }}
-      >
-        <Card.Title title="RADIANT" subtitle="Health Insurance" left={LeftContent} />
-        <Card.Content>
-          <Paragraph
-            style={{
-              height: 200,
-              width: 330,
-              borderWidth: 1,
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: 5,
-              elevation: 3,
-              flexDirection: "row",
-              paddingLeft: 16,
-              paddingRight: 14,
-              marginTop: 5,
-              marginBottom: 5,
+    <KeyboardAvoidWrapper>
+      <StyledContainer>
+        <StatusBar style="dark" />
+        <InnerContainer>
+          <SubTitle>Welcome to</SubTitle>
+          <SubTitle>Insurance Request Form</SubTitle>
+          <Formik
+            initialValues={{ name: "", id: "", status: "", email: "", occupation: "", city: "" }}
+            onSubmit={(values) => {
+              // const response = fetch("http://localhost:8282/insurance/" + values)
+              // const body = response.json()
+              // this.setState({ values: body, isLoading: false })
+              console.log(values)
             }}
           >
-            Based in Kigali & founded in 2012, RADIANT is a young, innovative and fast-growing insurance company that
-            offers a complete range of insurance services. Despite our young age, we have achieved a sensational entry
-            {"\n"}
-            {"\n"}
-            Price: 40000 Rwf
-            {"\n"}
-            Deduction: 50%
-          </Paragraph>
-          <Card.Actions>
-            <Button>Choose</Button>
-          </Card.Actions>
-        </Card.Content>
+            {({ handleChange, handleBlur, handleSubmit, values }) => (
+              <StyleFormArea
+                style={{
+                  marginBottom: 80,
+                }}
+              >
+                <MyTextInput
+                  label="Full Names"
+                  icon="person"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("name")}
+                  onBlur={handleBlur("name")}
+                  value={values.name}
+                />
+                <MyTextInput
+                  label="ID Number/PassPort"
+                  icon="id-badge"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("id")}
+                  onBlur={handleBlur("id")}
+                  value={values.id}
+                />
 
-        <Line />
+                <MyTextInput
+                  label="Marital Status"
+                  icon="people"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("status")}
+                  onBlur={handleBlur("status")}
+                  value={values.status}
+                />
+                <MyTextInput
+                  label="Email"
+                  icon="mail"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("email")}
+                  onBlur={handleBlur("email")}
+                  value={values.email}
+                />
+                <MyTextInput
+                  label="Occupation"
+                  icon="verified"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("occupation")}
+                  onBlur={handleBlur("occupation")}
+                  value={values.occupation}
+                />
+                <MyTextInput
+                  label="Town/City"
+                  icon="home"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("city")}
+                  onBlur={handleBlur("city")}
+                  value={values.city}
+                />
 
-        <Card.Title title="UAP" subtitle="Agriculture Insurance" left={LeftContent} />
-        <Card.Content>
-          <Paragraph
-            style={{
-              height: 200,
-              width: 330,
-              borderWidth: 1,
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: 5,
-              elevation: 3,
-              flexDirection: "row",
-              paddingLeft: 16,
-              paddingRight: 14,
-              marginTop: 5,
-              marginBottom: 5,
-            }}
-          >
-            Based in Kigali & founded in 2012, RADIANT is a young, innovative and fast-growing insurance company that
-            offers a complete range of insurance services. Despite our young age, we have achieved a sensational entry
-            {"\n"}
-            {"\n"}
-            Price: 40000 Rwf
-            {"\n"}
-            Deduction: 50%
-          </Paragraph>
-          <Card.Actions>
-            <Button>Choose</Button>
-          </Card.Actions>
-        </Card.Content>
+                <StyleButton onPress={handleSubmit}>
+                  <ButtonText>Submit</ButtonText>
+                </StyleButton>
+              </StyleFormArea>
+            )}
+          </Formik>
+        </InnerContainer>
+      </StyledContainer>
+    </KeyboardAvoidWrapper>
+  )
+}
 
-        <Line />
-
-        <Card.Title title="SORAS" subtitle="Vehicle Insurance" left={LeftContent} />
-        <Card.Content>
-          <Paragraph
-            style={{
-              height: 200,
-              width: 330,
-              borderWidth: 1,
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: 5,
-              elevation: 3,
-              flexDirection: "row",
-              paddingLeft: 16,
-              paddingRight: 14,
-              marginTop: 5,
-              marginBottom: 5,
-            }}
-          >
-            Based in Kigali & founded in 2012, RADIANT is a young, innovative and fast-growing insurance company that
-            offers a complete range of insurance services. Despite our young age, we have achieved a sensational entry
-            {"\n"}
-            {"\n"}
-            Price: 40000 Rwf
-            {"\n"}
-            Deduction: 40%
-          </Paragraph>
-          <Card.Actions>
-            <Button>Choose</Button>
-          </Card.Actions>
-        </Card.Content>
-      </Card>
-    </ScrollView>
+const MyTextInput = ({ label, icon, ...props }) => {
+  return (
+    <View>
+      <LeftIcon>
+        <Octicons name={icon} size={25} color={green} />
+      </LeftIcon>
+      <StyledInputLabel>{label}</StyledInputLabel>
+      <StyledTextInput {...props} />
+    </View>
   )
 }
 

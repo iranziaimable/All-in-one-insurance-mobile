@@ -50,7 +50,7 @@ const Login = ({ navigation }) => {
             initialValues={{ email: "", password: "" }}
             onSubmit={(values) => {
               console.log(values)
-              navigation.navigate("InsuranceScreen")
+              navigation.navigate("HomeScreen")
             }}
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (

@@ -50,20 +50,19 @@ const RootStack = () => {
           tabBarShowLabel: false,
           tabBarStyle: {
             position: "absolute",
-            bottom: 10,
+            bottom: 2,
             left: 15,
             right: 15,
-            backgroundColor: "#596151",
+            backgroundColor: "#F1F1F1",
             borderRadius: 15,
             height: 70,
             ...tabBarStyle.shadow,
           },
         }}
       >
-        {/* <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Signup" component={Signup} /> */}
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Signup" component={Signup} />
 
-        {/* HomeScreen */}
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
@@ -104,7 +103,6 @@ const RootStack = () => {
                   style={{
                     width: 30,
                     height: 30,
-                    // tintColor: '#ffffff'
                   }}
                 />
               </View>
@@ -137,8 +135,6 @@ const RootStack = () => {
                 <Text style={{ color: focused ? "#aaab5c" : "#748c94", fontSize: 12 }}>Insurance</Text>
               </View>
             ),
-            // tabBarActiveTintColor: 'tomato',
-            // tabBarInactiveTintColor: 'gray',
           }}
         />
       </Stack.Navigator>

@@ -37,7 +37,7 @@ import {
 } from "../../component/style"
 
 //colors
-const { brand, darkLight, primary } = Colors
+const { brand, darkLight, primary, green, orange } = Colors
 
 const Signup = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true)
@@ -63,7 +63,7 @@ const Signup = ({ navigation }) => {
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
-          <PageTitle>All In One Insurance Company</PageTitle>
+          <PageTitle>All In One Insurance</PageTitle>
           <SubTitle>Insurer Signup</SubTitle>
 
           {show && (
@@ -73,7 +73,7 @@ const Signup = ({ navigation }) => {
             initialValues={{ fullName: "", email: "", password: "", confirmPassword: "" }}
             onSubmit={(values) => {
               console.log(values)
-              navigation.navigate("DefineInsurance")
+              navigation.navigate("HomeScreen")
             }}
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -159,7 +159,7 @@ const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, i
   return (
     <View>
       <LeftIcon>
-        <Octicons name={icon} size={30} color={brand} />
+        <Octicons name={icon} size={30} color={green} />
       </LeftIcon>
       <StyledInputLabel>{label}</StyledInputLabel>
       {!isDate && <StyledTextInput {...props} />}

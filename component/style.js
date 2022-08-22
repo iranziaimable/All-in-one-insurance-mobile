@@ -9,11 +9,17 @@ export const Colors = {
   primary: "#ffffff",
   secondary: "#E5E7EB",
   tertiary: "#1F2937",
-  darkLight: "#9CA3AF",
+  darkLight: "#65676b",
   brand: "#6D28D9",
-  green: "#10B981",
-  red: "#EF4444",
+  // green: "#10B981",
+  // red: "#EF4444",
   orange: "#e6ba4c",
+  blue: "#3a4694",
+  white: "#fff",
+  dark: "#000",
+  red: "#F52A2A",
+  light: "#d1cfc9",
+  green: "#00B761",
 }
 
 const { primary, secondary, tertiary, darkLight, brand, green, red, orange } = Colors
@@ -21,7 +27,7 @@ const { primary, secondary, tertiary, darkLight, brand, green, red, orange } = C
 export const StyledContainer = styled.View`
   flex: 1;
   padding: 25px;
-  padding-top: ${StatusBarHeight + 10}px;
+  padding-top: ${StatusBarHeight + 2}px;
   background-color: ${primary};
 `
 export const InnerContainer = styled.View`
@@ -37,18 +43,16 @@ export const PageLogo = styled.Image`
 `
 
 export const PageTitle = styled.Text`
-  font-size: 25px;
+  font-size: 30px;
   text-align: center;
   font-weight: bold;
-  color: ${brand};
+  color: ${orange};
   padding: 10px;
 `
 export const SubTitle = styled.Text`
-  font-size: 24px;
-  color: ${orange};
-  margin-bottom: 20px;
-  border-bottom-color: ${green};
-  border-bottom-width: 2px;
+  font-size: 22px;
+  color: ${green};
+  margin-bottom: 10px;
 `
 
 export const StyleFormArea = styled.View`
@@ -96,7 +100,6 @@ export const StyleButton = styled.TouchableOpacity`
   border-radius: 10px;
   margin-vertical: 5px;
   height: 60px;
- 
 
   ${(props) =>
     props.google == true &&
@@ -122,9 +125,9 @@ export const MsgBox = styled.Text`
   font-size: 13px;
 `
 export const Line = styled.View`
-    height: 1px;
+    height: 3px;
     width: 100%
-    background-color: ${darkLight};
+    background-color: ${green};
     margin-vertical: 10px
 `
 export const ExtraView = styled.View`
